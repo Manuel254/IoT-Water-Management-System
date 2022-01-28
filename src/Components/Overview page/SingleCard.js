@@ -2,7 +2,13 @@ import { Card, CardContent, Box, Typography, Divider } from "@mui/material";
 
 const SingleCard = ({ mainIcon, smallIcon, period, quantity, time }) => {
   return (
-    <Card sx={{ minWidth: 250, p: 1 }}>
+    <Card
+      sx={{
+        width: 250,
+        p: 1,
+        margin: "0 auto",
+      }}
+    >
       <CardContent>
         <Box sx={{ display: "flex", justifyContent: "space-between" }}>
           <Box sx={{ display: "flex", alignItems: "center" }}>{mainIcon}</Box>

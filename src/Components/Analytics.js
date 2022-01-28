@@ -1,7 +1,12 @@
 import React from "react";
+import LineChart from "./Charts/LineChart";
 
 const Analytics = () => {
-  return <div>Analytics</div>;
+  return (
+    <div>
+      <LineChart />
+    </div>
+  );
 };
 
 export default Analytics;

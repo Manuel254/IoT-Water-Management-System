@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { AppBar, Toolbar, Typography, Button, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import { drawerWidth } from "./Sidebar";
+import { navContext } from "./NavContext";
 
 const Navbar = () => {
+  const { handleDrawerToggle } = useContext(navContext);
   return (
     <nav>
       <AppBar
@@ -21,7 +24,7 @@ const Navbar = () => {
             color="inherit"
             aria-label="open drawer"
             edge="start"
-            // onClick={handleDrawerToggle}
+            onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
             <MenuIcon sx={{ flexGrow: 1 }} />

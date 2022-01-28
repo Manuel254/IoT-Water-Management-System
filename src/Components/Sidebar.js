@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext } from "react";
 import {
   Toolbar,
   List,
@@ -17,16 +17,13 @@ import InfoIcon from "@mui/icons-material/Info";
 import logo from "../Assets/images/logo.svg";
 import { Link } from "react-router-dom";
 import { useStyles } from "../Assets/styles";
+import { navContext } from "./NavContext";
 
 export const drawerWidth = 240;
 
 const Sidebar = () => {
   const classes = useStyles();
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+  const { mobileOpen, handleDrawerToggle } = useContext(navContext);
 
   const drawerMenu = [
     {
@@ -65,12 +62,13 @@ const Sidebar = () => {
         <Divider />
       </Box>
       <List>
-        {drawerMenu.map(({ label, icon, color, path }) => (
+        {drawerMenu.map(({ label, icon, color, path }, index) => (
           <Link
             to={path}
             style={{
               textDecoration: "none",
             }}
+            key={index}
           >
             <ListItem
               button
@@ -108,6 +106,7 @@ const Sidebar = () => {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              background: "#424242",
             },
           }}
         >
