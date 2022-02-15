@@ -10,6 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { Chart } from "react-chartjs-2";
+import useFetch from "../useFetch";
 
 ChartJS.register(
   CategoryScale,
@@ -23,6 +24,7 @@ ChartJS.register(
 
 const LineChart = () => {
   const [data, setData] = useState({ datasets: [] });
+  const obj = useFetch();
 
   const chartFunc = () =>
     setData({
@@ -36,10 +38,10 @@ const LineChart = () => {
         },
       ],
     });
-
-  useEffect(() => {
-    chartFunc();
-  }, []);
+  // console.log(obj);
+  // useEffect(() => {
+  //   chartFunc();
+  // }, []);
 
   const options = {
     responsive: true,

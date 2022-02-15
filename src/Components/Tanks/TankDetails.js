@@ -9,9 +9,11 @@ import {
   Box,
 } from "@mui/material";
 import tank from "../../Assets/images/tank.png";
+import useFetch from "../useFetch";
 
 const TankDetails = () => {
   const { id } = useParams();
+  const obj = useFetch();
   return (
     <div>
       <Container>
@@ -40,22 +42,23 @@ const TankDetails = () => {
                   Tank ID:&nbsp; {id}
                 </Typography>
                 <Typography variant="h6" sx={{ color: "black" }}>
-                  Total Volume:&nbsp; 0L
+                  Total Volume:&nbsp; {obj["Tank Capacity"]} ml
                 </Typography>
                 <Typography variant="h6" sx={{ color: "black" }}>
-                  Current Volume:&nbsp; 0L
+                  Current Volume:&nbsp; {obj["Current Capacity"]} ml
                 </Typography>
                 <Typography variant="h6" sx={{ color: "black" }}>
-                  Tank Percentage:&nbsp; 60%
+                  Tank Percentage:&nbsp; {obj["Water Percentage"]}%
                 </Typography>
                 <Typography variant="h6" sx={{ color: "black" }}>
-                  Tank State:&nbsp; Normal
+                  Tank State:&nbsp; {obj["Tank Status"]}
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
         </Grid>
       </Container>
+      {console.log(obj)}
     </div>
   );
 };
