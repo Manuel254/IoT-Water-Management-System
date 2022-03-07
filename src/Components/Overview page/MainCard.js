@@ -8,8 +8,10 @@ import TodayIcon from "@mui/icons-material/Today";
 import CalendarViewMonthIcon from "@mui/icons-material/CalendarViewMonth";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import useFetch from "../useFetch";
 
 const MainCard = () => {
+  const chartData = useFetch();
   return (
     <>
       <Card
@@ -43,12 +45,12 @@ const MainCard = () => {
           />
           <MainCardContent
             name="Consumption State"
-            value="Normal"
+            value={chartData["Tank Status"]}
             icon={<FilterAltIcon />}
           />
           <MainCardContent
             name="Last Update"
-            value="11:59am"
+            value={chartData["time"]}
             icon={<LocationOnIcon />}
           />
         </CardContent>

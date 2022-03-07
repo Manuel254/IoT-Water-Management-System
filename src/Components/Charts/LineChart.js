@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -6,10 +6,12 @@ import {
   PointElement,
   LineElement,
   Title,
+  TimeScale,
   Tooltip,
   Legend,
 } from "chart.js";
 import { Chart } from "react-chartjs-2";
+import "chartjs-adapter-date-fns";
 import useFetch from "../useFetch";
 
 ChartJS.register(
@@ -18,45 +20,77 @@ ChartJS.register(
   PointElement,
   LineElement,
   Title,
+  TimeScale,
   Tooltip,
   Legend
 );
 
 const LineChart = () => {
-  const [data, setData] = useState({ datasets: [] });
-  const obj = useFetch();
+  const [data, setData] = useState({ labels: [], datasets: [] });
+  const chartData = useFetch();
+  const myChartRef = useRef();
+  const yLabels = [];
 
-  const chartFunc = () =>
-    setData({
-      labels: ["Nairobi	City", "Mombasa City", "Kisumu", "Nakuru", "Ruiru"],
+  function addData(chart, data) {
+    chart.data.datasets.forEach((dataset) => {
+      dataset.data.push(data);
+    });
+    chart.update();
+  }
+
+  const config = useMemo(
+    () => ({
       datasets: [
         {
-          label: "Population",
-          data: [4394073, 1208333, 721082, 570674, 490120],
+          label: "Water Level",
+          data: yLabels,
           borderColor: "rgb(53, 162, 235)",
           backgroundColor: "rgba(53, 162, 235, 0.5)",
         },
       ],
-    });
-  // console.log(obj);
-  // useEffect(() => {
-  //   chartFunc();
-  // }, []);
+    }),
+    []
+  );
 
+  console.log(chartData["now"]);
+
+  useEffect(() => {
+    addData(myChartRef.current, {
+      x: chartData["now"],
+      y: chartData["Current Capacity"],
+    });
+    setData(config);
+  }, [config, chartData]);
+
+  console.log(chartData["now"]);
   const options = {
     responsive: true,
     plugins: {
       title: {
         display: true,
-        text: "Top 5 Largest Cities in Kenya",
+        text: "Daily Water Consumption",
         fontSize: 25,
+      },
+    },
+    scales: {
+      x: {
+        type: "time",
+        time: {
+          unit: "second",
+          displayFormats: {
+            second: "h:mm:ss a",
+          },
+        },
+        ticks: {
+          maxTicksLimits: 6,
+        },
       },
     },
   };
 
   return (
     <>
-      <Chart type="line" data={data} options={options} />
+      <Chart type="line" data={data} options={options} ref={myChartRef} />
     </>
   );
 };

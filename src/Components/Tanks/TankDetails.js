@@ -8,8 +8,8 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import tank from "../../Assets/images/tank.png";
 import useFetch from "../useFetch";
+import TankContainer from "../Charts/TankContainer";
 
 const TankDetails = () => {
   const { id } = useParams();
@@ -33,7 +33,7 @@ const TankDetails = () => {
 
         <Grid container spacing={5}>
           <Grid item xs={12} md={6}>
-            <img src={tank} alt="tank" width={500} height={500} />
+            <TankContainer id={id} />
           </Grid>
           <Grid item xs={12} md={6}>
             <Card>

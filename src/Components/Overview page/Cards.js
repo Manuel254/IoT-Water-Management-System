@@ -6,8 +6,16 @@ import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import TodayIcon from "@mui/icons-material/Today";
 import CalendarViewMonthIcon from "@mui/icons-material/CalendarViewMonth";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import useFetch from "../useFetch";
 
 const Cards = () => {
+  // const chartData = useFetch();
+  // const dailyCapacity = [];
+  // let sum = 0;
+  // for (let i = 0; i <= dailyCapacity.length; i++) {
+  //   sum += chartData["Current Capacity"];
+  //   dailyCapacity.push(sum);
+  // }
   return (
     <>
       <Grid item xs={12} md={6}>

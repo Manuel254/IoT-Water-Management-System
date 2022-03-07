@@ -22,8 +22,8 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<Overview />} />
-            <Route path="/tanks" element={<TanksTable />} />
-            <Route path="/tanks/:id" element={<TankDetails />} />
+            <Route path="/tanks" element={<TankDetails />} />
+            {/* <Route path="/tanks/:id" element={<TankDetails />} /> */}
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/about" element={<About />} />
           </Routes>
