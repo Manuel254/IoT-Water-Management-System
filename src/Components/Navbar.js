@@ -43,9 +43,9 @@ const Navbar = () => {
           >
             Help
           </Button>
-          <Button color="inherit" sx={{ textTransform: "capitalize" }}>
+          {/* <Button color="inherit" sx={{ textTransform: "capitalize" }}>
             Login
-          </Button>
+          </Button> */}
         </Toolbar>
       </AppBar>
     </nav>

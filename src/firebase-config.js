@@ -1,18 +1,17 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue } from "firebase/database";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAwJtbGFpVVMQhHQ-dvaehILf8P5PkFMkU",
-  authDomain: "iot-water-management-sys-3c962.firebaseapp.com",
+  apiKey: "AIzaSyB6OfldRL3sJ-g6iv0AJA2TVDprlTuO6gw",
+  authDomain: "water-management-system-3cc2b.firebaseapp.com",
   databaseURL:
-    "https://iot-water-management-sys-3c962-default-rtdb.firebaseio.com",
-  projectId: "iot-water-management-sys-3c962",
-  storageBucket: "iot-water-management-sys-3c962.appspot.com",
-  messagingSenderId: "226042213406",
-  appId: "1:226042213406:web:12d32bb2ea33b30aa52a0f",
-  measurementId: "G-DB13D7PVPF",
+    "https://water-management-system-3cc2b-default-rtdb.firebaseio.com",
+  projectId: "water-management-system-3cc2b",
+  storageBucket: "water-management-system-3cc2b.appspot.com",
+  messagingSenderId: "965211050769",
+  appId: "1:965211050769:web:787eef82badd9b3a1ab2b0",
+  measurementId: "G-SGYJDYB9MF",
 };
 
 // Initialize Firebase

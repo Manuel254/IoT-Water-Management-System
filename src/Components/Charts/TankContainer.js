@@ -19,7 +19,7 @@ function TankContainer() {
       upperLimitDisplay: "Full",
       numberSuffix: " ml",
       cylFillColor: "#0099fd",
-      cyloriginx: "300",
+      cyloriginx: "220",
       cyloriginy: "300",
       cylradius: "80",
       cylheight: "200",
@@ -29,7 +29,7 @@ function TankContainer() {
 
   const chartConfigs = {
     type: "cylinder",
-    width: 500,
+    width: 450,
     height: 400,
     dataFormat: "json",
     dataSource: dataSource,
@@ -38,6 +38,9 @@ function TankContainer() {
   return (
     <div className="App">
       <ReactFC {...chartConfigs} />
+      {/* {alert("Water Level is Low")
+        ? obj["Tank Status"] === "Low"
+        : alert("Water Level is Normal")} */}
     </div>
   );
 }

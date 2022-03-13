@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -12,14 +11,13 @@ import useFetch from "../useFetch";
 import TankContainer from "../Charts/TankContainer";
 
 const TankDetails = () => {
-  const { id } = useParams();
   const obj = useFetch();
   return (
     <div>
       <Container>
         <Box sx={{ mb: 2 }}>
           <Typography variant="h5" component="h3" align="center">
-            Tank {id}
+            Tank Status
           </Typography>
           <Typography
             variant="caption"
@@ -33,14 +31,11 @@ const TankDetails = () => {
 
         <Grid container spacing={5}>
           <Grid item xs={12} md={6}>
-            <TankContainer id={id} />
+            <TankContainer />
           </Grid>
           <Grid item xs={12} md={6}>
             <Card>
-              <CardContent>
-                <Typography variant="h6" sx={{ color: "black" }}>
-                  Tank ID:&nbsp; {id}
-                </Typography>
+              <CardContent sx={{ margin: "15%" }}>
                 <Typography variant="h6" sx={{ color: "black" }}>
                   Total Volume:&nbsp; {obj["Tank Capacity"]} ml
                 </Typography>
