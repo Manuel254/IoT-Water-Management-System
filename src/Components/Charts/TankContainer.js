@@ -1,4 +1,4 @@
-import React from "react";
+import { useContext } from "react";
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
 import Widgets from "fusioncharts/fusioncharts.widgets";
@@ -8,9 +8,7 @@ import useFetch from "../useFetch";
 
 ReactFC.fcRoot(FusionCharts, Charts, FusionTheme, Widgets);
 
-function TankContainer() {
-  const obj = useFetch();
-
+function TankContainer({ obj }) {
   const dataSource = {
     chart: {
       lowerLimit: "0",

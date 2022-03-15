@@ -1,4 +1,4 @@
-import React from "react";
+import { useContext } from "react";
 import {
   Card,
   CardContent,
@@ -31,29 +31,28 @@ const TankDetails = () => {
 
         <Grid container spacing={5}>
           <Grid item xs={12} md={6}>
-            <TankContainer />
+            <TankContainer obj={obj} />
           </Grid>
           <Grid item xs={12} md={6}>
             <Card>
               <CardContent sx={{ margin: "15%" }}>
                 <Typography variant="h6" sx={{ color: "black" }}>
-                  Total Volume:&nbsp; {obj["Tank Capacity"]} ml
+                  Total Volume:&nbsp; {obj && obj["Tank Capacity"]} ml
                 </Typography>
                 <Typography variant="h6" sx={{ color: "black" }}>
-                  Current Volume:&nbsp; {obj["Current Capacity"]} ml
+                  Current Volume:&nbsp; {obj && obj["Current Capacity"]} ml
                 </Typography>
                 <Typography variant="h6" sx={{ color: "black" }}>
-                  Tank Percentage:&nbsp; {obj["Water Percentage"]}%
+                  Tank Percentage:&nbsp; {obj && obj["Water Percentage"]}%
                 </Typography>
                 <Typography variant="h6" sx={{ color: "black" }}>
-                  Tank State:&nbsp; {obj["Tank Status"]}
+                  Tank State:&nbsp; {obj && obj["Tank Status"]}
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
         </Grid>
       </Container>
-      {console.log(obj)}
     </div>
   );
 };

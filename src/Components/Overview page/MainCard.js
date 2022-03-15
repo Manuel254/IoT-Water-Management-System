@@ -25,7 +25,7 @@ const MainCard = () => {
           />
           <MainCardContent
             name="No of Tanks"
-            value="8"
+            value="1"
             icon={<BackpackIcon />}
           />
           <MainCardContent
@@ -44,7 +44,7 @@ const MainCard = () => {
             icon={<CalendarViewMonthIcon />}
           />
           <MainCardContent
-            name="Consumption State"
+            name="Tank State"
             value={chartData["Tank Status"]}
             icon={<FilterAltIcon />}
           />

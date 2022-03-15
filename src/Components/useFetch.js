@@ -1,28 +1,32 @@
 import { useState, useEffect } from "react";
-import { db, ref, onValue } from "../firebase-config";
+import { db, ref, onValue, push } from "../firebase-config";
 
-const useFetch = () => {
+const useFetch = (props) => {
   const [chartData, setChartData] = useState({});
-  const [data, setData] = useState(0);
-  const time = new Date().toLocaleTimeString();
+  const time = new Date().toLocaleTimeString("en-US", { hour12: false });
   const date = new Date();
   const now = `${date.getFullYear()}-0${
     date.getMonth() + 1
   }-${date.getDate()}T${time.split(" ")[0]}`;
+  const formatDate = `${date.getDate()}/${
+    date.getMonth() + 1
+  }/${date.getFullYear()}`;
 
+  console.log(time);
   useEffect(() => {
-    const dataRef = ref(db, "data");
-    onValue(dataRef, (snapshot) => {
+    let capacity = 0;
+    onValue(ref(db, "data"), (snapshot) => {
+      capacity = snapshot.val()["Current Capacity"];
       setChartData({ ...snapshot.val(), time, now });
-      console.log("Component Rendered");
-      console.log(snapshot.val());
-      localStorage.setItem("Value", JSON.stringify(data));
-      setData(
-        (prevState) =>
-          JSON.parse(prevState) + snapshot.val()["Current Capacity"]
-      );
     });
-  }, [time, now]);
+
+    push(ref(db, "graph"), {
+      date: formatDate,
+      level: capacity,
+      timestamp: now,
+    });
+    console.log("render");
+  }, [time, now, formatDate]);
 
   return chartData;
 };
