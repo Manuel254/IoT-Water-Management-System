@@ -33,7 +33,7 @@ const Navbar = () => {
             variant="h6"
             sx={{ flexGrow: 1, textTransform: "capitalize", fontSize: "14px" }}
           >
-            IOT Water Management System
+            IOT Water Monitoring System
           </Typography>
           <HelpOutlineIcon />
           <Button
