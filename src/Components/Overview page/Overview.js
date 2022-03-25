@@ -1,19 +1,32 @@
+import { useState, useEffect } from "react";
 import { Grid, Container } from "@mui/material";
 import LineChart from "../Charts/LineChart";
-import Cards from "./Cards.js";
 import MainCard from "./MainCard";
+import { db, ref, onValue } from "../../firebase-config";
 
 const Overview = () => {
+  const [data, setData] = useState(0);
+  let dataArr = [];
+  useEffect(() => {
+    onValue(ref(db, "graph"), (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        let yVal = snapshot.val()[childSnapshot.key].level;
+        dataArr.push(yVal);
+      });
+      setData(dataArr);
+    });
+  }, []);
+
   return (
     <div>
-      <Grid container spacing={2}>
-        <Grid container item xs={12} md={6} spacing={1}>
-          <Cards />
+      <Container>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={12}>
+            <MainCard data={data} />
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={6}>
-          <MainCard />
-        </Grid>
-      </Grid>
+      </Container>
+
       <Container>
         <LineChart />
       </Container>

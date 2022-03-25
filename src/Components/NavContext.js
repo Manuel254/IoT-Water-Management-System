@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 
 export const navContext = createContext();
 
-export const NavProvider = (props) => {
+export const NavProvider = ({ children }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -12,7 +12,7 @@ export const NavProvider = (props) => {
   return (
     <div>
       <navContext.Provider value={{ mobileOpen, handleDrawerToggle }}>
-        {props.children}
+        {children}
       </navContext.Provider>
     </div>
   );

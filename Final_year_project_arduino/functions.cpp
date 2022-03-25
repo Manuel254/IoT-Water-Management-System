@@ -69,8 +69,11 @@ float tankVolume(){
  float waterVolume(){
   float water_volume;
   water_volume = PI * RADIUS * RADIUS * waterHeight();
-
-  return round(water_volume);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+  if (water_volume >=0) {
+    return round(water_volume);
+  }else {
+    return 0;
+  }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
  }
 
 // Water level percentage

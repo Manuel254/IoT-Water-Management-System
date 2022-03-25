@@ -1,10 +1,8 @@
-import { useContext } from "react";
 import FusionCharts from "fusioncharts";
 import Charts from "fusioncharts/fusioncharts.charts";
 import Widgets from "fusioncharts/fusioncharts.widgets";
 import FusionTheme from "fusioncharts/themes/fusioncharts.theme.fusion";
 import ReactFC from "react-fusioncharts";
-import useFetch from "../useFetch";
 
 ReactFC.fcRoot(FusionCharts, Charts, FusionTheme, Widgets);
 
@@ -36,9 +34,6 @@ function TankContainer({ obj }) {
   return (
     <div className="App">
       <ReactFC {...chartConfigs} />
-      {/* {alert("Water Level is Low")
-        ? obj["Tank Status"] === "Low"
-        : alert("Water Level is Normal")} */}
     </div>
   );
 }

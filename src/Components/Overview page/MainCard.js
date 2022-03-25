@@ -3,20 +3,34 @@ import { Card, CardContent } from "@mui/material";
 import MainCardContent from "./MainCardContent";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import BackpackIcon from "@mui/icons-material/Backpack";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import TodayIcon from "@mui/icons-material/Today";
-import CalendarViewMonthIcon from "@mui/icons-material/CalendarViewMonth";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import useFetch from "../useFetch";
 
-const MainCard = () => {
+const MainCard = ({ data }) => {
   const chartData = useFetch();
+  const dat = [600, 500, 500, 200];
+  const consumptionArr = [];
+
+  for (let i = 0; i < data.length - 1; i++) {
+    const diff = data[i] - data[i + 1];
+    consumptionArr.push(diff);
+    data[i] = data[i + 1];
+  }
+
+  const consumption = consumptionArr
+    .filter((el) => !isNaN(el))
+    .reduce((total, current) => total + current, 0);
+
+  const avg = Math.floor(consumption / consumptionArr.length);
+
+  console.log(consumptionArr);
+  console.log(data);
+  console.log(consumption);
   return (
     <>
-      <Card
-        sx={{ width: "45vw", "@media(max-width: 500px)": { width: "100vw" } }}
-      >
+      <Card>
         <CardContent>
           <MainCardContent
             name="System Name"
@@ -29,19 +43,9 @@ const MainCard = () => {
             icon={<BackpackIcon />}
           />
           <MainCardContent
-            name="Avg Daily Consumption"
-            value="0L"
+            name="Avg water Consumption"
+            value={`${avg} ml`}
             icon={<TodayIcon />}
-          />
-          <MainCardContent
-            name="Avg Weekly Consumption"
-            value="0L"
-            icon={<CalendarTodayIcon />}
-          />
-          <MainCardContent
-            name="Avg Monthly Consumption"
-            value="0L"
-            icon={<CalendarViewMonthIcon />}
           />
           <MainCardContent
             name="Tank State"

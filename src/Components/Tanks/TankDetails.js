@@ -5,6 +5,8 @@ import {
   Grid,
   Typography,
   Box,
+  Alert,
+  AlertTitle,
 } from "@mui/material";
 import useFetch from "../useFetch";
 import TankContainer from "../Charts/TankContainer";
@@ -13,6 +15,32 @@ const TankDetails = () => {
   const obj = useFetch();
   return (
     <div>
+      {obj["Tank Status"] === "Low" ? (
+        <Alert variant="filled" severity="error">
+          <AlertTitle>Alert</AlertTitle>The Level of water in your water tank is
+          Low. Kindly fill your tank.
+        </Alert>
+      ) : (
+        <></>
+      )}
+
+      {obj["Tank Status"] === "Normal" ? (
+        <Alert variant="filled" severity="info">
+          <AlertTitle>Normal</AlertTitle>The Level of water in your water tank
+          is Normal. You should fill it soon.
+        </Alert>
+      ) : (
+        <></>
+      )}
+
+      {obj["Tank Status"] === "High" ? (
+        <Alert variant="filled" severity="success">
+          <AlertTitle>High</AlertTitle>The Level of water in your water tank is
+          High. No need to fill it.
+        </Alert>
+      ) : (
+        <></>
+      )}
       <Container>
         <Box sx={{ mb: 2 }}>
           <Typography variant="h5" component="h3" align="center">

@@ -1,4 +1,4 @@
-ffffffffffff//* Arduino - Ultrasonic Sensor HC-SR04
+/* Arduino - Ultrasonic Sensor HC-SR04
 *
 * Wiring: Ultrasonic Sensor -> Arduino:
 * - VCC  -> 5VDC
@@ -14,8 +14,8 @@ ffffffffffff//* Arduino - Ultrasonic Sensor HC-SR04
 #define ECHO_PIN 5 // echo pin
 
 //Network Credentials
-#define FIREBASE_HOST "iot-water-management-sys-3c962-default-rtdb.firebaseio.com"
-#define FIREBASE_Authorization_key "eKEkCNQkTGuW5JlG2gGWVrciYNN3fgeZTXM5AVaf"
+#define FIREBASE_HOST "https://water-management-system-3cc2b-default-rtdb.firebaseio.com/"
+#define FIREBASE_Authorization_key "ZHSZJWp1t8hG2kn4n1FP6mrtYxL4sukR5b0HgoJ0"
 #define WIFI_SSID "Manuel Techs"
 #define WIFI_PASSWORD "manuel254techs"
 

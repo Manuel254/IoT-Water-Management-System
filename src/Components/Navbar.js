@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { AppBar, Toolbar, Typography, Button, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
@@ -36,16 +37,22 @@ const Navbar = () => {
             IOT Water Monitoring System
           </Typography>
           <HelpOutlineIcon />
-          <Button
-            color="inherit"
-            variant="text"
-            sx={{ textTransform: "capitalize" }}
+
+          <Link
+            to="/about"
+            style={{
+              textDecoration: "none",
+              color: "black",
+            }}
           >
-            Help
-          </Button>
-          {/* <Button color="inherit" sx={{ textTransform: "capitalize" }}>
-            Login
-          </Button> */}
+            <Button
+              color="inherit"
+              variant="text"
+              sx={{ textTransform: "capitalize" }}
+            >
+              Help
+            </Button>
+          </Link>
         </Toolbar>
       </AppBar>
     </nav>

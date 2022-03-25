@@ -28,7 +28,6 @@ import {
 } from "chart.js";
 import { Chart } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
-import useFetch from "../useFetch";
 import { db, ref, onValue } from "../../firebase-config";
 
 ChartJS.register(
@@ -61,6 +60,14 @@ ChartJS.register(
 const LineChart = () => {
   const [data, setData] = useState({ labels: [], datasets: [] });
   const [chartData, setChartData] = useState({});
+  // const date = new Date();
+  // const dateToday = `${date.getFullYear()}-0${
+  //   date.getMonth() + 1
+  // }-${date.getDate()}`;
+
+  // const { dat } = useContext(consumptionContext);
+
+  // console.log(typeof dat);
 
   let dataArr = [];
   useEffect(() => {
@@ -73,24 +80,17 @@ const LineChart = () => {
       setChartData(dataArr);
     });
   }, []);
-  console.log(chartData);
-  const myChartRef = useRef();
 
-  // function addData(chart, data) {
-  //   chart.data.datasets.forEach((dataset) => {
-  //     dataset.data.push(data);
-  //   });
-  //   chart.update();
-  // }
+  const myChartRef = useRef();
 
   const config = useMemo(
     () => ({
       datasets: [
         {
           label: "Water Level",
-          barThickness: 4,
-          maxBarThickness: 6,
-          minBarLength: 2,
+          barThickness: 7,
+          maxBarThickness: 10,
+          minBarLength: 5,
           data: chartData,
           borderColor: "rgb(53, 162, 235)",
           backgroundColor: "rgba(53, 162, 235, 0.5)",
@@ -101,10 +101,6 @@ const LineChart = () => {
   );
 
   useEffect(() => {
-    // addData(myChartRef.current, {
-    //   x: chartData["now"],
-    //   y: chartData["Current Capacity"],
-    // });
     setData(config);
   }, [config]);
 
@@ -121,10 +117,7 @@ const LineChart = () => {
       x: {
         type: "time",
         time: {
-          unit: "hour",
-        },
-        ticks: {
-          source: "data",
+          unit: "minute",
         },
       },
       y: {
