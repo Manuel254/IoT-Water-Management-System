@@ -12,7 +12,6 @@ const useFetch = (props) => {
     date.getMonth() + 1
   }/${date.getFullYear()}`;
 
-  console.log(time);
   useEffect(() => {
     let capacity = 0;
     onValue(ref(db, "data"), (snapshot) => {
@@ -25,7 +24,6 @@ const useFetch = (props) => {
       level: capacity,
       timestamp: now,
     });
-    console.log("render");
   }, [time, now, formatDate]);
 
   return chartData;

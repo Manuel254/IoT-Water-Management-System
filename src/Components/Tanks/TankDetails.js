@@ -13,6 +13,7 @@ import TankContainer from "../Charts/TankContainer";
 
 const TankDetails = () => {
   const obj = useFetch();
+
   return (
     <div>
       {obj["Tank Status"] === "Low" ? (

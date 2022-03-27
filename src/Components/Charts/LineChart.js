@@ -60,17 +60,9 @@ ChartJS.register(
 const LineChart = () => {
   const [data, setData] = useState({ labels: [], datasets: [] });
   const [chartData, setChartData] = useState({});
-  // const date = new Date();
-  // const dateToday = `${date.getFullYear()}-0${
-  //   date.getMonth() + 1
-  // }-${date.getDate()}`;
 
-  // const { dat } = useContext(consumptionContext);
-
-  // console.log(typeof dat);
-
-  let dataArr = [];
   useEffect(() => {
+    let dataArr = [];
     onValue(ref(db, "graph"), (snapshot) => {
       snapshot.forEach((childSnapshot) => {
         let xVal = snapshot.val()[childSnapshot.key].timestamp;

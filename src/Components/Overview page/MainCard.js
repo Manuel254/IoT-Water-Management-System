@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@mui/material";
 import MainCardContent from "./MainCardContent";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
@@ -10,24 +10,27 @@ import useFetch from "../useFetch";
 
 const MainCard = ({ data }) => {
   const chartData = useFetch();
-  const dat = [600, 500, 500, 200];
+  const [consumption, setConsumption] = useState(0);
   const consumptionArr = [];
 
-  for (let i = 0; i < data.length - 1; i++) {
-    const diff = data[i] - data[i + 1];
-    consumptionArr.push(diff);
-    data[i] = data[i + 1];
-  }
+  useEffect(() => {
+    for (let i = 0; i < data.length - 1; i++) {
+      const diff = data[i] - data[i + 1];
+      consumptionArr.push(diff);
+      data[i] = data[i + 1];
+    }
 
-  const consumption = consumptionArr
-    .filter((el) => !isNaN(el))
-    .reduce((total, current) => total + current, 0);
+    setConsumption(
+      Math.abs(
+        consumptionArr
+          .filter((el) => !isNaN(el))
+          .reduce((total, current) => total + current, 0)
+      )
+    );
+  }, [consumptionArr, data]);
 
-  const avg = Math.floor(consumption / consumptionArr.length);
+  console.log("Render");
 
-  console.log(consumptionArr);
-  console.log(data);
-  console.log(consumption);
   return (
     <>
       <Card>
@@ -43,8 +46,8 @@ const MainCard = ({ data }) => {
             icon={<BackpackIcon />}
           />
           <MainCardContent
-            name="Avg water Consumption"
-            value={`${avg} ml`}
+            name="Water Consumption"
+            value={`${consumption} ml`}
             icon={<TodayIcon />}
           />
           <MainCardContent
