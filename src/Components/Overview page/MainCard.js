@@ -19,7 +19,6 @@ const MainCard = ({ data }) => {
       consumptionArr.push(diff);
       data[i] = data[i + 1];
     }
-
     setConsumption(
       Math.abs(
         consumptionArr
@@ -27,9 +26,7 @@ const MainCard = ({ data }) => {
           .reduce((total, current) => total + current, 0)
       )
     );
-  }, [consumptionArr, data]);
-
-  console.log("Render");
+  }, [consumptionArr]);
 
   return (
     <>
