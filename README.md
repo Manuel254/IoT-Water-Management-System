@@ -25,7 +25,7 @@ properly and prevent the wastage of water.
 - ReactJs
 - Material UI
 - React Router
-- Chart.js
+- Fusion charts
 - Firebase
 - Progressive Web Apps (PWA)
 
